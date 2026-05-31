@@ -7,8 +7,10 @@ from src.adapters.orm import Base
 
 @pytest_asyncio.fixture
 async def fixt_engine():
-    # Отключаем SSL строкой, как требует asyncpg для докера
-    engine = create_async_engine(settings.database_url, connect_args={"ssl": "disable"})
+    engine = create_async_engine(
+        settings.database_url,
+        connect_args={"ssl": "disable"}
+    )
     
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
