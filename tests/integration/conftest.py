@@ -1,16 +1,11 @@
 import pytest_asyncio
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
-
 from src.config import settings
 from src.adapters.orm import Base
 
-
-@pytest_asyncio.fixture
+@pytest_asyncio.fixture(loop_scope="function")
 async def fixt_engine():
-    engine = create_async_engine(
-        settings.database_url,
-        connect_args={"ssl": "disable"}
-    )
+    engine = create_async_engine(settings.database_url, connect_args={"ssl": "disable"})
     
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
@@ -20,8 +15,7 @@ async def fixt_engine():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
 
-
-@pytest_asyncio.fixture
+@pytest_asyncio.fixture(loop_scope="function")
 async def session(fixt_engine):
     async_session = async_sessionmaker(
         bind=fixt_engine,

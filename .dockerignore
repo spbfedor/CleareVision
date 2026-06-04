@@ -1,0 +1,29 @@
+# Исключаем локальные виртуальные окружения Python
+.venv/
+venv/
+env/
+clear-env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Исключаем кэш и отчеты тест-раннера pytest
+.pytest_cache/
+.coverage
+htmlcov/
+pytest.ini
+
+# Исключаем локальные скрытые настройки IDE и системные файлы
+.git/
+.gitignore
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Исключаем документацию и файлы сборки, которые не нужны в контейнере
+README.md
+docs/
+dist/
+build/
