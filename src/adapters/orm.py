@@ -1,8 +1,10 @@
 from sqlalchemy import Float, String
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
+
 class Base(DeclarativeBase):
     pass
+
 
 class UserProfileOrm(Base):
     __tablename__ = "user_profiles"

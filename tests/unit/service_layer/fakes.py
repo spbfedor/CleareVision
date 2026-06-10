@@ -1,5 +1,6 @@
 from src.domain import UserProfile
 
+
 class FakeUserProfileRepository:
     def __init__(self):
         self._profiles = []

@@ -5,10 +5,7 @@ from src.domain import UserProfile
 
 def test_settings_creations_with_valid_data():
     profile = UserProfile(
-        user_id="id_1",
-        font_size=2.0,
-        visual_mode="normal",
-        letter_spacing=1.0
+        user_id="id_1", font_size=2.0, visual_mode="normal", letter_spacing=1.0
     )
     assert profile.user_id == "id_1"
     assert profile.font_size == 2.0

@@ -14,8 +14,7 @@ async def client():
     app.dependency_overrides[get_service] = lambda: fake_service
 
     async with AsyncClient(
-        transport=ASGITransport(app=app),
-        base_url="http://test"
+        transport=ASGITransport(app=app), base_url="http://test"
     ) as ac:
         yield ac, fake_repo
 
